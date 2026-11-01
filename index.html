@@ -1,0 +1,1703 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#b9222d">
+<meta name="description" content="列治文.com，在列治文及大温地区提供个人陪伴、日常交流、语言练习、城市探索与活动陪同。">
+<title>列治文.com｜你想去哪，我陪你去</title>
+
+<style>
+:root {
+  --red: #b9222d;
+  --bright: #ff1423;
+  --ink: #22201f;
+  --muted: #716c68;
+  --cream: #f8f5ef;
+  --line: #e9e4df;
+  --white: #fff;
+  --max: 1120px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: var(--ink);
+  line-height: 1.8;
+  background: #fff;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  width: min(var(--max), calc(100% - 40px));
+  margin-inline: auto;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--red);
+  font-size: 22px;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.brand-icon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: var(--red);
+  border-radius: 12px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-size: 14px;
+}
+
+.links a:hover,
+.footer-links a:hover {
+  color: var(--bright);
+}
+
+.menu {
+  display: none;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #fff;
+  padding: 7px 12px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 12px 21px;
+  border: 1px solid var(--red);
+  border-radius: 10px;
+  background: var(--red);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.btn:hover {
+  background: var(--bright);
+  border-color: var(--bright);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.btn-light {
+  background: transparent;
+  color: var(--red);
+}
+
+.btn-light:hover { color: #fff; }
+
+.hero { background: var(--cream); }
+
+.hero-grid {
+  min-height: 550px;
+  padding-block: 62px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 30px;
+  background: #f2e5e3;
+  color: var(--red);
+  font-size: 13px;
+  font-weight: 750;
+}
+
+h1 {
+  margin: 20px 0;
+  font-size: clamp(38px, 5.4vw, 62px);
+  line-height: 1.24;
+  letter-spacing: -1.5px;
+}
+
+.hero p {
+  max-width: 520px;
+  color: var(--muted);
+  font-size: 17px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.small-note {
+  margin-top: 18px;
+  font-size: 13px !important;
+}
+
+/* 首页日历：放在说明文字下方、按钮上方，保持紧凑 */
+.hero-calendar-inline {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 18px;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255,255,255,.92);
+  box-shadow: 0 3px 12px rgba(0,0,0,.035);
+  line-height: 1.45;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+.hero-calendar-inline .calendar-location,
+.hero-calendar-inline .calendar-date,
+.hero-calendar-inline .calendar-weekday,
+.hero-calendar-inline .weather-temp,
+.hero-calendar-inline .weather-desc,
+.hero-calendar-inline .weather-range { display: block; }
+.hero-calendar-inline .calendar-location {
+  color: var(--red);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .8px;
+}
+.hero-calendar-inline .calendar-date {
+  margin-top: 2px;
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.hero-calendar-inline .calendar-weekday,
+.hero-calendar-inline .weather-desc,
+.hero-calendar-inline .weather-range {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
+.hero-calendar-inline .calendar-weather {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+.hero-calendar-inline .weather-icon { font-size: 25px; line-height: 1.2; }
+.hero-calendar-inline .weather-temp { font-size: 18px; font-weight: 800; line-height: 1.25; }
+
+.hero-title span {
+  display: block;
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .hero-grid {
+    min-height: auto;
+    padding-top: 18px;
+    padding-bottom: 26px;
+    gap: 18px;
+    align-items: start;
+  }
+  .hero-title {
+    margin: 13px 0 12px;
+    font-size: clamp(28px, 7.4vw, 36px);
+    letter-spacing: -.6px;
+    line-height: 1.25;
+  }
+  .hero-calendar-inline {
+    margin-top: 10px;
+    padding: 7px 9px;
+  }
+  .hero-calendar-inline .calendar-date { font-size: 18px; }
+  .hero-calendar-inline .weather-range { overflow-wrap: anywhere; }
+}
+
+.hero-photo {
+  min-height: 400px;
+  border-radius: 24px;
+  overflow: hidden;
+  background:
+    linear-gradient(0deg,rgba(0,0,0,.64),transparent 60%),
+    url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=85")
+    center/cover no-repeat;
+  display: flex;
+  align-items: end;
+  padding: 28px;
+  color: #fff;
+}
+
+.hero-photo strong {
+  display: block;
+  font-size: 25px;
+}
+
+.hero-photo span { font-size: 13px; }
+
+section { padding: 78px 0; }
+
+.heading {
+  max-width: 720px;
+  margin-bottom: 32px;
+}
+
+.heading h2 {
+  margin: 0 0 12px;
+  font-size: clamp(29px, 4vw, 41px);
+  line-height: 1.4;
+}
+
+.heading p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.service {
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  overflow: hidden;
+  background: #fff;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.service:hover,
+.service[open] {
+  border-color: #d5a1a4;
+  box-shadow: 0 7px 25px #291a1a08;
+}
+
+.service summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 21px;
+  cursor: pointer;
+}
+
+.service summary::-webkit-details-marker { display: none; }
+
+.service-icon {
+  flex: 0 0 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  background: #f8eeee;
+  border-radius: 13px;
+  color: var(--red);
+}
+
+.line-icon {
+  width: 25px;
+  height: 25px;
+  display: block;
+  overflow: visible;
+}
+
+.service-title {
+  flex: 1;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.arrow {
+  color: var(--red);
+  font-size: 23px;
+  transition: transform .2s;
+}
+
+.service[open] .arrow { transform: rotate(45deg); }
+
+.service-body {
+  padding: 0 22px 23px 83px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.service-body ul {
+  padding-left: 19px;
+  margin: 8px 0;
+}
+
+.service-body li { margin: 3px 0; }
+
+.joke {
+  color: var(--red);
+  font-weight: 700;
+  margin-top: 9px;
+}
+
+.cream { background: var(--cream); }
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.step {
+  padding: 24px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+}
+
+.step-no {
+  color: var(--red);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.step h3 {
+  margin: 12px 0 6px;
+  font-size: 20px;
+}
+
+.step p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 45px;
+  align-items: center;
+}
+
+.about-photo {
+  min-height: 380px;
+  border-radius: 22px;
+  overflow: hidden;
+  display: flex;
+  align-items: end;
+  padding: 18px;
+  background-image:
+    linear-gradient(0deg,#0008,transparent 45%),
+    url("https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80");
+  background-position: center;
+  background-size: cover;
+}
+
+.about-photo span {
+  color: #fff;
+  font-size: 13px;
+}
+
+.about-copy h2 {
+  font-size: 35px;
+  line-height: 1.4;
+  margin: 13px 0;
+}
+
+.about-copy p { color: var(--muted); }
+
+.points {
+  padding: 0;
+  list-style: none;
+}
+
+.points li { margin: 9px 0; }
+
+.points li::before {
+  content: "✓";
+  color: var(--red);
+  font-weight: 800;
+  margin-right: 10px;
+}
+
+.quote {
+  padding: 40px;
+  border-radius: 20px;
+  color: #fff;
+  background: var(--red);
+}
+
+.quote h2 {
+  font-size: clamp(29px, 4vw, 42px);
+  line-height: 1.4;
+  margin: 0 0 12px;
+}
+
+.quote p { margin: 8px 0; }
+
+.quote .btn {
+  margin-top: 16px;
+  background: #fff;
+  color: var(--red);
+  border-color: #fff;
+}
+
+.quote .btn:hover {
+  background: #ffe9e9;
+  border-color: #ffe9e9;
+}
+
+.faq { max-width: 820px; }
+
+.faq details {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.faq summary {
+  cursor: pointer;
+  font-weight: 750;
+}
+
+.faq p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* 联系方式区域 */
+.contact-actions {
+  align-items: stretch;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.contact-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  min-height: 62px;
+  margin-top: 0;
+  padding: 13px 18px;
+  border: 1.5px solid rgba(255,255,255,.8);
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1.5;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .2s, border-color .2s,
+    box-shadow .2s, transform .2s;
+}
+
+/* 图标清晰显示 */
+.contact-icon {
+  display: block;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  flex: 0 0 36px;
+  object-fit: contain;
+  opacity: 1;
+}
+
+.contact-arrow {
+  margin-left: auto;
+  font-size: 18px;
+  opacity: .8;
+}
+
+/* 微信按钮 */
+.contact-wechat {
+  color: #087a43 !important;
+  background: rgba(255,255,255,.97) !important;
+  border-color: #b9e8cc !important;
+}
+
+.contact-wechat:hover,
+.contact-wechat.copied {
+  color: #065c34 !important;
+  background: #e5f8ec !important;
+  border-color: #07c160 !important;
+}
+
+/* WhatsApp 按钮 */
+.contact-whatsapp {
+  color: #137a3e !important;
+  background: rgba(255,255,255,.97) !important;
+  border-color: #b8ebca !important;
+}
+
+.contact-whatsapp:hover {
+  color: #075b2b !important;
+  background: #e6f9ed !important;
+  border-color: #25d366 !important;
+}
+
+/* 电话按钮 */
+.contact-phone {
+  color: #a31e28 !important;
+  background: rgba(255,255,255,.97) !important;
+  border-color: #f0c2c5 !important;
+}
+
+.contact-phone:hover {
+  color: #85151e !important;
+  background: #fff0f1 !important;
+  border-color: #b9222d !important;
+}
+
+.contact-actions .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 16px rgba(0,0,0,.10);
+}
+
+.contact-actions .btn:active {
+  transform: scale(.98);
+}
+
+.contact-actions .btn:focus-visible {
+  outline: 3px solid rgba(255,255,255,.85);
+  outline-offset: 3px;
+}
+
+.contact-note {
+  margin-top: 20px !important;
+  font-size: 14px;
+  line-height: 1.9;
+  color: rgba(255,255,255,.92);
+}
+
+.contact-note.success {
+  font-weight: 750;
+  color: #fff;
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 32px 0;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-links {
+  display: flex;
+  gap: 19px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.legal {
+  font-size: 12px;
+  color: #89827e;
+  margin-top: 20px;
+}
+
+@media(max-width:760px) {
+  .container { width: calc(100% - 32px); }
+
+  .nav { min-height: 66px; }
+
+  .brand { font-size: 19px; }
+
+  .menu { display: block; }
+
+  .links {
+    display: none;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    right: 0;
+    padding: 18px 22px 24px;
+    flex-direction: column;
+    align-items: stretch;
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+    gap: 13px;
+  }
+
+  .links.open { display: flex; }
+
+  .hero-grid {
+    padding-block: 40px;
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .hero-photo { min-height: 270px; }
+
+  section { padding: 53px 0; }
+
+  .services,
+  .steps,
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service summary { padding: 17px; }
+
+  .service-body { padding: 0 18px 20px 78px; }
+
+  .about-photo { min-height: 300px; }
+
+  .quote { padding: 27px 23px; }
+
+  .contact-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .contact-actions .btn {
+    width: 100%;
+    min-height: 62px;
+    padding: 13px 16px;
+    font-size: 14px;
+  }
+
+  .contact-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    flex-basis: 36px;
+  }
+
+  .contact-arrow { margin-left: auto; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+
+/* 服务卡片：鼠标悬停、手机触摸均可展开 */
+.service {
+  transition: border-color .22s ease, box-shadow .22s ease,
+    background-color .22s ease;
+}
+
+.service summary {
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.service .service-body {
+  display: none;
+  animation: serviceReveal .22s ease;
+}
+
+/* 展开后显示详细内容 */
+.service[open] .service-body {
+  display: block;
+}
+
+/* 悬停时提供明显反馈 */
+@media (hover: hover) and (pointer: fine) {
+  .service:hover {
+    border-color: #d5a1a4;
+    background-color: #fffdfd;
+    box-shadow: 0 7px 25px rgba(185, 34, 45, .09);
+  }
+}
+
+/* 已展开的卡片保持高亮 */
+.service[open] {
+  border-color: #b9222d;
+  background-color: #fffdfd;
+  box-shadow: 0 7px 25px rgba(185, 34, 45, .08);
+}
+
+/* 加号旋转成叉号 */
+.service .arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  border-radius: 50%;
+  color: #b9222d;
+  background: #f8eeee;
+  transition: transform .22s ease, background-color .22s ease;
+}
+
+.service[open] .arrow {
+  transform: rotate(45deg);
+  background: #f4dddd;
+}
+
+@keyframes serviceReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service,
+  .service .arrow {
+    transition: none;
+  }
+
+  .service .service-body {
+    animation: none;
+  }
+}
+/* 服务卡片：电脑悬停、手机触摸滑过展开 */
+.service .service-body {
+  display: none;
+}
+
+.service[open] .service-body {
+  display: block;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .service:hover .service-body {
+    display: block;
+  }
+
+  .service:hover {
+    border-color: #b9222d;
+    box-shadow: 0 7px 25px rgba(185, 34, 45, 0.09);
+  }
+}
+/* 缩小价格区块的上下留白 */
+#pricing {
+  padding-top: 28px !important;
+  padding-bottom: 28px !important;
+}
+
+/* 缩小标题与价格卡片之间的距离 */
+#pricing .heading {
+  margin-bottom: 16px;
+}
+
+/* 缩小价格卡片 */
+#pricing .pricing-card {
+  max-width: 580px;
+  padding: 18px 24px;
+}
+
+/* 手机端进一步缩小 */
+@media (max-width: 600px) {
+  #pricing {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
+
+  #pricing .pricing-card {
+    padding: 16px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home">
+      <span class="brand-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="23" height="23"
+          fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 10.2c0 5-7 11-7 11s-7-6-7-11a7 7 0 1 1 14 0Z"/>
+          <circle cx="12" cy="10" r="2.4"/>
+        </svg>
+      </span>
+      <span>列治文.com</span>
+    </a>
+
+    <button class="menu" id="menuBtn" aria-label="打开菜单"
+      aria-expanded="false" aria-controls="navLinks" type="button">
+      <svg viewBox="0 0 24 24" width="22" height="22"
+        fill="none" stroke="currentColor" stroke-width="1.8"
+        stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+    </button>
+
+    <nav class="links" id="navLinks">
+      <a href="#services">	我能陪你做什么</a>
+      <a href="#how"></a>
+      <a href="#about">关于我</a>
+      <a href="#faq"></a>
+      <a class="btn" href="#contact">	联系我 ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div> 
+      <h1 class="hero-title">
+        <span>日历上只是普通的一天</span>
+        <span>也可以过得很有意思</span>
+      </h1>
+     
+      <div class="hero-calendar-inline" aria-label="列治文当地日期与天气">
+        <span class="calendar-location">COQUITLAM · 列治文</span>
+        <span class="calendar-date" id="calendarDate">加载日期中…</span>
+        <span class="calendar-weekday" id="calendarWeekday">列治文当地时间</span>
+        <div class="calendar-weather">
+          <span class="weather-icon" id="weatherIcon" aria-hidden="true">🌤️</span>
+          <div class="calendar-weather-info">
+            <span class="weather-temp" id="weatherTemp">--°C</span>
+            <span class="weather-desc" id="weatherDesc">正在获取天气…</span>
+            <span class="weather-range" id="weatherRange"></span>
+          </div>
+        </div>
+      </div>
+       <p>想给平凡的一天添点惊喜吗？</p>
+      <div class="actions">
+        <a class="btn" href="#contact">聊聊你的需求 ↗</a>
+        <a class="btn btn-light" href="#services">看看陪伴清单</a>
+      </div>
+      <p class="small-note"></p>
+    </div>
+    <div class="hero-photo" role="img" aria-label="自然风景">
+      <div>
+        <strong>出去走走，坐下来聊聊</strong>
+        <span>生活也许就多了一段值得回忆的时光。</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="heading">
+      <h2>想出门，不想一个人？</h2>
+      <p>散步、聊天、探索新地方，或一起尝试点新鲜事。</p>
+    </div>
+
+    <div class="services">
+
+      <details class="service">
+        <summary>
+          <span class="service-icon">
+            <svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4"/>
+              <path d="M12 2.5v2M12 19.5v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2.5 12h2m15 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+            </svg>
+          </span>
+          <span class="service-title">01 · 陪你出去走走</span>
+          <span class="arrow">＋</span>
+        </summary>
+        <div class="service-body">
+        散步、逛街、高尔夫、吃饭、看电影、逛商场、看日落、拍照、逛公园，或者一起探索列治文和周边。
+          <ul>
+            <li>周末想出门，不想一个人</li>
+            <li>想找个地方走走，顺便聊聊天</li>
+            <li>聊工作、未来、兴趣、文化、旅行，或者最近发生的那些事</li>
+          </ul>
+          <div class="joke">事情不一定会变简单，但至少可以一起理清头绪。</div>
+        </div>
+      </details>
+
+
+
+      <details class="service">
+        <summary>
+          <span class="service-icon">
+            <svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M3.5 9h5l2 2.5-1.5 3-2.5.5-1 3M14 3.5l-1 3 2 2 3-.5 2 2.5M13 21l-.5-4 2-2 3 .5"/>
+            </svg>
+          </span>
+          <span class="service-title">02 · 陪你学英语、学中文</span>
+          <span class="arrow">＋</span>
+        </summary>
+        <div class="service-body">
+          一起练习语言、分享文化，让学习多一点陪伴，少一点拘束。
+          <ul>
+            <li>英语、中文日常对话</li>
+            <li>语言交换与文化交流</li>
+            <li>面试、演讲前的口语练习</li>
+            <li>一起读书、自习、聊聊想法</li>
+          </ul>
+          <div class="joke">不用急着说得完美，我们可以慢慢练习。
+        </div>
+      </details>
+
+            <details class="service">
+        <summary>
+          <span class="service-icon">
+            <svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m3 10 4-4 4 1 2-1 5 2 3 3-3 3-3-1-3 3-2-1-2 1-3-3-2-3Z"/>
+              <path d="m7 6 3-2 4 2M8 13l3 3m0-3 3 2m-1-4 3 2"/>
+            </svg>
+          </span>
+          <span class="service-title">03 · 陪你参加会议与活动</span>
+          <span class="arrow">＋</span>
+        </summary>
+        <div class="service-body">
+    无论是参加活动、认识新朋友，还是处理生活中的小事，都可以一起准备、慢慢来。
+            <li>商务交流与校园和兴趣活动</li>
+            <li>公开会议、讲座、展览</li>
+    
+            <li>一起整理待办事项、研究解决办法</li>
+          </ul>
+          <div class="joke">第一次也没关系，我们可以一起慢慢来。</div>
+        </div>
+      </details>
+
+      <details class="service">
+        <summary>
+          <span class="service-icon">
+            <svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20s-8-4.8-8-10a4.4 4.4 0 0 1 8-2.5A4.4 4.4 0 0 1 20 10c0 5.2-8 10-8 10Z"/>
+              <path d="m12 8 1.1 2.2 2.4.3-1.8 1.7.5 2.4-2.2-1.2-2.1 1.2.4-2.4-1.7-1.7 2.4-.3L12 8Z"/>
+            </svg>
+          </span>
+          <span class="service-title">04 · 陪你面对相亲与社交</span>
+          <span class="arrow">＋</span>
+        </summary>
+        <div class="service-body">
+          社交有时很紧张，可以先一起准备。
+          <ul>
+            <li>相亲前模拟对话、练习自我介绍</li>
+            <li>讨论约会话题和社交礼仪</li>
+            <li>参加公开聚会、活动时的陪同</li>
+            <li>约会后找人聊聊感受</li>
+          </ul>
+          <div class="joke">我可以帮你壮胆，但不能替你心动。</div>
+   
+        </div>
+      </details>
+
+
+
+      <details class="service">
+        <summary>
+          <span class="service-icon">
+            <svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="4" width="16" height="16" rx="3" transform="rotate(8 12 12)"/>
+              <circle cx="9" cy="9" r=".8"/>
+              <circle cx="15" cy="9" r=".8"/>
+              <circle cx="12" cy="12" r=".8"/>
+              <circle cx="9" cy="15" r=".8"/>
+              <circle cx="15" cy="15" r=".8"/>
+            </svg>
+          </span>
+          <span class="service-title">05 · 陪你玩点喜欢的</span>
+          <span class="arrow">＋</span>
+        </summary>
+        <div class="service-body">
+          <ul>
+            <li>桌游、下棋和其他休闲游戏</li>
+            <li>唱歌、练习乐器、交流音乐</li>
+            <li>摄影、逛书店、探索兴趣</li>
+            <li>打球或参加适合双方的活动</li>
+            <li>一起挑战某个新爱好</li>
+          </ul>
+          <div class="joke">兴趣不一定相同，但可以先聊聊。</div>
+        </div>
+      </details>
+
+     
+
+
+    </div>
+  </div>
+  
+</section>
+<section id="about">
+  <div class="container about-grid">
+    <div class="about-photo" role="img" aria-label="王晟哲的个人照片"
+         style="background-image: url('image1.jpg'); aspect-ratio: 1 / 1; background-size: cover; background-position: center;">
+    </div>
+
+    <div class="about-copy">
+      <span class="eyebrow">认识我</span>
+      <h2>你好，我是住在列治文的王晟哲。</h2>
+
+      <p>我喜欢探索新地方、认识新朋友，也喜欢用一些有趣的方式给生活增添惊喜。</p>
+
+      <p>除了陪你散步、聊天、打高尔夫、探索列治文及大温地区，我还会表演纸牌魔术。无论是见面时的小惊喜，还是一次特别的休闲体验，都可以提前和我商量。</p>
+
+      <p>我希望每次见面都不只是打发时间，而是能有一些值得回忆的瞬间。</p>
+
+      <ul class="points">
+        <li>一点惊喜：纸牌魔术，为见面增添乐趣</li>
+        <li>自在交流：尊重双方的时间、边界与意愿，按你的兴趣安排</li>
+        <li>认真对待：提前沟通内容、时间和费用，让每次见面都有明确预期</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="cream" id="pricing">
+  <div class="container">
+    <div class="heading">
+      <h2>服务价格与预约</h2>
+      <p>价格清晰，提前沟通，让每一次见面都安心。</p>
+    </div>
+
+    <div class="pricing-card">
+      <div class="pricing-main">
+        <p class="pricing-label"></p>
+
+        <div class="pricing-amount">
+          <span class="pricing-currency">$</span><span>24</span>
+        </div>
+
+        <p class="pricing-unit">CAD / 小时起</p>
+
+        <p class="pricing-description">
+          具体费用根据活动内容、时长与地点提前确认。
+        </p>
+      </div>
+
+      <div class="pricing-divider"></div>
+
+      <div class="pricing-details">
+        <div class="pricing-item">
+          <div class="pricing-icon">◷</div>
+          <div class="pricing-text">
+            <h3>可预约时段</h3>
+            <p class="pricing-highlight">每日早上 7:00 至晚上 22:00</p>
+            <p class="pricing-note">
+              请提前联系，确认日期、开始时间、服务时长和地点后，预约才算确定。具体安排以双方确认为准。
+            </p>
+          </div>
+        </div>
+
+        <div class="pricing-item">
+          <div class="pricing-icon">✓</div>
+          <div class="pricing-text">
+            <h3>收费与额外开支</h3>
+            <p class="pricing-note">
+              服务费用根据实际时长及已确认的价格计算。交通、门票、餐饮等额外开支由谁承担，会在预约前逐项说明并取得双方同意；未经确认，不会擅自增加收费。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* 服务价格：紧凑版 */
+  #pricing .pricing-card {
+    max-width: 580px;
+    margin: 0 auto;
+    padding: 24px 30px;
+    background: #ffffff;
+    border: 1px solid #eadcdd;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(117, 0, 20, 0.05);
+  }
+
+  #pricing .pricing-main {
+    text-align: center;
+  }
+
+  #pricing .pricing-label {
+    margin: 0 0 8px;
+    color: #8b959e;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  #pricing .pricing-amount {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    color: #c92732;
+    font-size: 58px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+
+  #pricing .pricing-currency {
+    margin-right: 2px;
+    font-size: 0.58em;
+    font-weight: 700;
+  }
+
+  #pricing .pricing-unit {
+    margin: 5px 0 0;
+    color: #c92732;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  #pricing .pricing-description {
+    margin: 10px 0 0;
+    color: #666666;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  #pricing .pricing-divider {
+    height: 1px;
+    margin: 20px 0;
+    background: #eee5e5;
+  }
+
+  #pricing .pricing-details {
+    display: grid;
+    gap: 18px;
+  }
+
+  #pricing .pricing-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  #pricing .pricing-icon {
+    display: flex;
+    flex: 0 0 34px;
+    width: 34px;
+    height: 34px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    background: #fff0f1;
+    color: #c92732;
+    font-size: 21px;
+    font-weight: 600;
+  }
+
+  #pricing .pricing-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  #pricing .pricing-text h3 {
+    margin: 1px 0 5px;
+    color: #222222;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  #pricing .pricing-text p {
+    margin: 0;
+    line-height: 1.65;
+  }
+
+  #pricing .pricing-highlight {
+    color: #c92732;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  #pricing .pricing-note {
+    color: #666666;
+    font-size: 12px;
+  }
+
+  #pricing .pricing-highlight + .pricing-note {
+    margin-top: 3px;
+  }
+
+  @media (max-width: 600px) {
+    #pricing .pricing-card {
+      padding: 20px 17px;
+      border-radius: 12px;
+    }
+
+    #pricing .pricing-divider {
+      margin: 16px 0;
+    }
+
+    #pricing .pricing-details {
+      gap: 15px;
+    }
+
+    #pricing .pricing-item {
+      gap: 10px;
+    }
+
+    #pricing .pricing-icon {
+      flex-basis: 30px;
+      width: 30px;
+      height: 30px;
+      font-size: 19px;
+    }
+
+    #pricing .pricing-amount {
+      font-size: 52px;
+    }
+
+    #pricing .pricing-text h3 {
+      font-size: 13px;
+    }
+
+    #pricing .pricing-note {
+      font-size: 12px;
+    }
+  }
+  /* 缩小首页标题区域的米黄色背景留白 */
+@media (max-width: 760px) {
+  .hero-grid {
+    padding-top: 8px !important;
+    padding-bottom: 16px !important;
+    gap: 14px !important;
+  }
+
+  .hero-title {
+    margin-top: 6px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .hero-calendar-inline {
+    margin-top: 6px !important;
+  }
+
+  .hero .actions {
+    margin-top: 14px !important;
+  }
+
+  .hero-photo {
+    min-height: 230px;
+  }
+}
+</style>
+
+<!-- 联系我们：微信、WhatsApp、电话 -->
+<section id="contact">
+  <div class="container">
+    <div class="heading">
+      <h2>列治文.com</h2>
+      <p>想出门、想聊天 或有件事想找人商量，都可以来找我。</p>
+    </div>
+
+    <div class="quote">
+      <h2>来认识一下吧</h2>
+      <p></p>
+
+
+      <div class="actions contact-actions">
+
+        <!-- 微信：点击整个按钮复制微信号 -->
+        <button
+          class="btn contact-wechat"
+          id="wechatBtn"
+          type="button"
+          aria-label="复制微信号 VancouverAt"
+        >
+          <img
+            class="contact-icon"
+            src="https://cdn.simpleicons.org/wechat/07C160"
+            alt=""
+            width="36"
+            height="36"
+          >
+          <span id="wechatText">微信：VancouverAt</span>
+          <span class="contact-arrow" aria-hidden="true"></span>
+        </button>
+
+        <!-- WhatsApp：直接打开对应号码的聊天 -->
+        <a
+          class="btn contact-whatsapp"
+          href="https://wa.me/16725588899"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="通过 WhatsApp 联系，号码 +1 672 558 8899"
+        >
+          <img
+            class="contact-icon"
+            src="https://cdn.simpleicons.org/whatsapp/25D366"
+            alt=""
+            width="36"
+            height="36"
+          >
+          <span>WhatsApp：+1 672 558 8899</span>
+          <span class="contact-arrow" aria-hidden="true"></span>
+        </a>
+
+        <!-- 电话：手机点击进入拨号界面 -->
+        <a
+          class="btn contact-phone"
+          href="tel:+16725588899"
+          aria-label="拨打电话 672 558 8899"
+        >
+          <svg
+            class="contact-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.9"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2
+              19.79 19.79 0 0 1-8.63-3.07
+              19.5 19.5 0 0 1-6-6
+              19.79 19.79 0 0 1-3.07-8.67
+              A2 2 0 0 1 4.11 2h3
+              a2 2 0 0 1 2 1.72
+              c.12.96.36 1.9.7 2.79
+              a2 2 0 0 1-.45 2.11L8.09 9.91
+              a16 16 0 0 0 6 6l1.27-1.27
+              a2 2 0 0 1 2.11-.45
+              c.89.34 1.83.58 2.79.7
+              A2 2 0 0 1 22 16.92Z"/>
+          </svg>
+          <span>电话：672 558 8899</span>
+          <span class="contact-arrow" aria-hidden="true">↗</span>
+        </a>
+
+      </div>
+
+      <p class="contact-note" id="contactNote" aria-live="polite">
+
+      </p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <a class="brand" href="#home">
+        <span class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="23" height="23"
+            fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 10.2c0 5-7 11-7 11s-7-6-7-11a7 7 0 1 1 14 0Z"/>
+            <circle cx="12" cy="10" r="2.4"/>
+          </svg>
+        </span>
+        <span>列治文.com</span>
+      </a>
+
+      <div class="footer-links">
+        <a href="#services">服务清单</a>
+        <a href="#about">认识我</a>
+        <a href="#contact">联系我们</a>
+      </div>
+    </div>
+
+    <p class="legal">
+      © <span id="year"></span> 列治文.com · Richmond, British Columbia. All rights reserved.
+    </p>
+
+    <p class="legal">
+在列治文，认识新朋友，探索新生活。
+
+陪你走走、聊聊。
+    </p>
+  </div>
+</footer>
+
+<script>
+/* 手机菜单 */
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+  const open = navLinks.classList.toggle("open");
+
+  menuBtn.setAttribute("aria-expanded", String(open));
+  menuBtn.setAttribute("aria-label", open ? "关闭菜单" : "打开菜单");
+
+  if (open) {
+    menuBtn.textContent = "×";
+  } else {
+    menuBtn.innerHTML =
+      '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+  }
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded", "false");
+    menuBtn.setAttribute("aria-label", "打开菜单");
+
+    menuBtn.innerHTML =
+      '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+  });
+});
+
+
+/* 列治文当地日期与天气 */
+function updateRichmondDate() {
+  const now = new Date();
+  const zone = "America/Vancouver";
+  const date = document.getElementById("calendarDate");
+  const weekday = document.getElementById("calendarWeekday");
+  if (date) date.textContent = new Intl.DateTimeFormat("zh-CN", {
+    timeZone: zone, month: "long", day: "numeric"
+  }).format(now);
+  if (weekday) weekday.textContent = new Intl.DateTimeFormat("zh-CN", {
+    timeZone: zone, weekday: "long", year: "numeric"
+  }).format(now);
+}
+
+function getRichmondWeather(code) {
+  if (code === 0) return ["☀️", "晴朗"];
+  if (code === 1) return ["🌤️", "大致晴朗"];
+  if (code === 2) return ["⛅", "局部多云"];
+  if (code === 3) return ["☁️", "多云"];
+  if ([45, 48].includes(code)) return ["🌫️", "有雾"];
+  if ([51, 53, 55, 56, 57].includes(code)) return ["🌦️", "毛毛雨"];
+  if ([61, 63, 65, 66, 67].includes(code)) return ["🌧️", "有雨"];
+  if ([71, 73, 75, 77].includes(code)) return ["❄️", "降雪"];
+  if ([80, 81, 82].includes(code)) return ["🌧️", "阵雨"];
+  if ([85, 86].includes(code)) return ["🌨️", "阵雪"];
+  if ([95, 96, 99].includes(code)) return ["⛈️", "雷暴"];
+  return ["🌡️", "天气状况"];
+}
+
+async function updateRichmondWeather() {
+  const desc = document.getElementById("weatherDesc");
+  const temp = document.getElementById("weatherTemp");
+  const range = document.getElementById("weatherRange");
+  const icon = document.getElementById("weatherIcon");
+  if (!desc || !temp || !range || !icon) return;
+  try {
+    const url = "https://api.open-meteo.com/v1/forecast" +
+      "?latitude=49.1666&longitude=-123.1336" +
+      "&current=temperature_2m,weather_code" +
+      "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max" +
+      "&timezone=America%2FVancouver&forecast_days=1";
+    const response = await fetch(url);
+    if (!response.ok) throw new Error("天气接口暂不可用");
+    const data = await response.json();
+    const weather = getRichmondWeather(data.current.weather_code);
+    icon.textContent = weather[0];
+    temp.textContent = `${Math.round(data.current.temperature_2m)}°C`;
+    desc.textContent = `当前天气：${weather[1]}`;
+    const high = Math.round(data.daily.temperature_2m_max[0]);
+    const low = Math.round(data.daily.temperature_2m_min[0]);
+    const rain = data.daily.precipitation_probability_max?.[0];
+    range.textContent = `今日最高 ${high}° · 最低 ${low}°` +
+      (rain != null ? ` · 降水概率 ${rain}%` : "");
+  } catch (error) {
+    icon.textContent = "🌤️";
+    temp.textContent = "--°C";
+    desc.textContent = "天气暂时无法获取";
+    range.textContent = "请稍后再试";
+  }
+}
+
+updateRichmondDate();
+updateRichmondWeather();
+setInterval(updateRichmondDate, 60 * 1000);
+setInterval(updateRichmondWeather, 30 * 60 * 1000);
+
+/* 自动更新页脚年份 */
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* 微信：点击复制微信号，并在页面显示提示 */
+const wechatBtn = document.getElementById("wechatBtn");
+const wechatText = document.getElementById("wechatText");
+const contactNote = document.getElementById("contactNote");
+
+let wechatResetTimer;
+
+wechatBtn.addEventListener("click", async () => {
+  const wechatId = "VancouverAt";
+
+  try {
+    if (!navigator.clipboard || !window.isSecureContext) {
+      throw new Error("Clipboard unavailable");
+    }
+
+    await navigator.clipboard.writeText(wechatId);
+
+    wechatText.textContent = "已复制！VancouverAt";
+    contactNote.textContent =
+      "复制啦！打开微信，搜索 VancouverAt，就可以添加啦！";
+    contactNote.classList.add("success");
+    wechatBtn.classList.add("copied");
+    wechatBtn.setAttribute("aria-label", "微信号已复制 VancouverAt");
+
+    clearTimeout(wechatResetTimer);
+
+    wechatResetTimer = setTimeout(() => {
+      wechatText.textContent = "微信：VancouverAt";
+      contactNote.textContent =
+        "";
+      contactNote.classList.remove("success");
+      wechatBtn.classList.remove("copied");
+      wechatBtn.setAttribute("aria-label", "复制微信号 VancouverAt");
+    }, 4000);
+
+  } catch (error) {
+    /* 复制功能不可用时，提供手动复制窗口 */
+    window.prompt(
+      "请复制微信号 VancouverAt，然后打开微信搜索添加：",
+      wechatId
+    );
+  }
+});
+
+/* 服务卡片交互：沿用温哥华.com的滚动自动展开逻辑 */
+document.addEventListener("DOMContentLoaded", function () {
+  const section = document.getElementById("services");
+  if (!section) return;
+
+  const cards = Array.from(section.querySelectorAll(".service"));
+  if (!cards.length) return;
+
+  const mobileQuery = window.matchMedia(
+    "(max-width: 760px), (hover: none) and (pointer: coarse)"
+  );
+  let cardObserver = null;
+  let sectionObserver = null;
+
+  // 采用累积展开：滚动到新卡片时展开它，之前展开的卡片保持展开。
+  function openCard(card) {
+    if (card) card.open = true;
+  }
+
+  function clearCards() {
+    cards.forEach(function (card) {
+      card.open = false;
+    });
+  }
+
+  // 电脑端：鼠标悬停即可展开；不影响原有点击开合。
+  cards.forEach(function (card) {
+    card.addEventListener("mouseenter", function () {
+      if (!mobileQuery.matches) openCard(card);
+    });
+
+    const summary = card.querySelector("summary");
+    if (summary) {
+      summary.setAttribute("aria-label", "展开或收起服务详情");
+    }
+  });
+
+  function setupMobileBehavior() {
+    if (cardObserver) {
+      cardObserver.disconnect();
+      cardObserver = null;
+    }
+    if (sectionObserver) {
+      sectionObserver.disconnect();
+      sectionObserver = null;
+    }
+
+    clearCards();
+    if (!mobileQuery.matches) return;
+
+    function updateActiveCard() {
+      const sectionRect = section.getBoundingClientRect();
+      const sectionVisible =
+        sectionRect.bottom > 0 && sectionRect.top < window.innerHeight;
+
+      if (!sectionVisible) {
+        clearCards();
+        return;
+      }
+
+      const viewportCenter = window.innerHeight * 0.48;
+      const candidates = cards.map(function (card) {
+        const rect = card.getBoundingClientRect();
+        const visibleHeight = Math.max(
+          0,
+          Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0)
+        );
+
+        return {
+          card: card,
+          visibleHeight: visibleHeight,
+          distance: Math.abs((rect.top + rect.bottom) / 2 - viewportCenter)
+        };
+      }).filter(function (item) {
+        return item.visibleHeight > 0;
+      });
+
+      if (!candidates.length) return;
+
+      candidates.sort(function (a, b) {
+        return a.distance - b.distance;
+      });
+
+      // 滚动经过的卡片逐个展开，已展开的卡片保持展开。
+      openCard(candidates[0].card);
+    }
+
+    cardObserver = new IntersectionObserver(updateActiveCard, {
+      threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
+      rootMargin: "-8% 0px -8% 0px"
+    });
+
+    cards.forEach(function (card) {
+      cardObserver.observe(card);
+    });
+
+    sectionObserver = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        updateActiveCard();
+      } else {
+        clearCards();
+      }
+    }, { threshold: 0 });
+
+    sectionObserver.observe(section);
+  }
+
+  setupMobileBehavior();
+
+  if (mobileQuery.addEventListener) {
+    mobileQuery.addEventListener("change", setupMobileBehavior);
+  } else if (mobileQuery.addListener) {
+    mobileQuery.addListener(setupMobileBehavior);
+  }
+});
+
+
+</script>
+
+</body>
+</html>
